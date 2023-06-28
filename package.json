@@ -1,0 +1,15 @@
+{
+  "name": "superfactura",
+  "version": "1.0.4",
+  "description": "SuperFactura package for all the client side actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-cmd": "^5.0.0"
+  },
+  "keywords": [],
+  "author": "Angel Zimmermann",
+  "license": "BSD 3"
+}
