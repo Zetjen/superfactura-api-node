@@ -1,0 +1,127 @@
+class SuperFacturaAPI {
+  version: string;
+  user: string;
+  password: string;
+  serverUrl: string = "https://superfactura.cl/";
+
+  constructor(user: string, password: string) {
+    this.version = "0.1-nodejs";
+    this.user = user;
+    this.password = password;
+  }
+
+  async SendDTE(data: any, env: "cer" | "pro", options: any = {}) {
+    return new Promise(async (resolve, reject) => {
+      options["ambiente"] = env;
+      options["encoding"] = "UTF-8";
+      options["version"] = this.version;
+
+      if (options["savePDF"]) {
+        options["getPDF"] = 1;
+      }
+
+      if (options["saveXML"]) {
+        options["getXML"] = 1;
+      }
+
+      if (options["saveEscpos"]) {
+        // Add compatibility with standard syntax "save... (like savePDF or saveXML)"
+        options["getEscPos"] = options["saveEscpos"];
+      }
+
+      this.SendRequest(data, options)
+        .then((output) => {
+          const obj = JSON.parse(output);
+          if (obj["ack"] !== "ok") {
+            const text =
+              obj["response"]["title"] + " - " + obj["response"]["message"];
+            return reject(text);
+          }
+
+          const appRes = obj["response"];
+          const folio = appRes["folio"];
+
+          if (appRes["ok"] === "1") {
+            const savePDF = options["savePDF"];
+            if (savePDF) {
+              this.WriteFile(
+                `${savePDF}.pdf`,
+                this.DecodeBase64(appRes["pdf"])
+              );
+
+              if (appRes["pdfCedible"]) {
+                this.WriteFile(
+                  `${savePDF}-cedible.pdf`,
+                  this.DecodeBase64(appRes["pdfCedible"])
+                );
+              }
+            }
+
+            const saveXML = options["saveXML"];
+            if (saveXML) {
+              this.WriteFile(`${saveXML}.xml`, appRes["xml"].encode("latin-1"));
+            }
+
+            const saveEscpos = options["getEscPos"];
+            if (saveEscpos) {
+              const b64escpos = appRes["escpos"];
+              this.WriteFile(`${saveEscpos}.escpos`, atob(b64escpos));
+            }
+          } else {
+            return reject(output);
+          }
+
+          resolve(obj);
+        })
+        .catch((error) => {
+          return reject(error);
+        });
+    });
+  }
+
+  async SendRequest(data, options) {
+    const params = {
+      user: this.user,
+      pass: this.password,
+      content: JSON.stringify(data),
+      options: JSON.stringify(options),
+    };
+
+    const searchParams = new URLSearchParams(params);
+
+    const headers = {
+      "Content-type": "application/x-www-form-urlencoded",
+      Accept: "text/plain",
+    };
+
+    return await fetch(`${this.serverUrl}?a=json`, {
+      method: "POST",
+      headers,
+      body: searchParams.toString(),
+    })
+      .then((response) => response.blob())
+      .then((blob) => blob.arrayBuffer())
+      .then(async (arrayBuffer) => this.Decompress(arrayBuffer))
+      .catch((error) => console.error(error));
+  }
+
+  Decompress(gzip: any) {
+    const pako = require("pako");
+    return pako.ungzip(gzip, { to: "string" });
+  }
+
+  DecodeBase64(b64: any) {
+    return Buffer.from(b64, "base64");
+  }
+
+  WriteFile(filename: string, data: any) {
+    const fs = require("fs");
+    fs.writeFile(filename, data, (err) => {
+      if (err) {
+        throw err;
+      }
+    });
+  }
+}
+
+module.exports = SuperFacturaAPI;

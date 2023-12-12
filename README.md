@@ -33,7 +33,7 @@ const SuperFacturaAPI = require("superfactura");
 const api = new SuperFacturaAPI("usuario", "contraseña", "ambiente");
 ```
 
-Al llamar a la clase de SF, se deben entregar los datos del usuario (correo y contraseña), también se puede pasar el ambiente, se guardarán los datos entregados para luego poder llamar a las funciones de la clase.
+Al llamar a la clase de SF, se deben entregar los datos del usuario (correo y contraseña), se guardarán los datos entregados para luego poder llamar a las funciones de la clase.
 
 ### Emitiendo un documento
 
@@ -53,8 +53,6 @@ Luego se puede pasar el ambiente y [opciones adicionales](https://superfactura.c
 ## Authors
 
 - **Angel Zimmermann** - [AngelZimmermann](https://angelzimmermann.de)
-
-También todas las contribuciones del repositorio github para [.NET](https://github.com/kripper/superfactura-api-net/contributors) quienes participaron en el desarrollo inicial.
 
 ## License
 
