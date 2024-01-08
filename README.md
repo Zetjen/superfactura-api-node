@@ -30,7 +30,7 @@ const SuperFacturaAPI = require("superfactura");
 ```
 
 ```js
-const api = new SuperFacturaAPI("usuario", "contraseña", "ambiente");
+const api = new SuperFacturaAPI("usuario", "contraseña");
 ```
 
 Al llamar a la clase de SF, se deben entregar los datos del usuario (correo y contraseña), se guardarán los datos entregados para luego poder llamar a las funciones de la clase.

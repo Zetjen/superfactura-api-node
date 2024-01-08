@@ -2,7 +2,7 @@ class SuperFacturaAPI {
   version: string;
   user: string;
   password: string;
-  serverUrl: string = "https://superfactura.cl/";
+  serverUrl = "https://superfactura.cl/";
 
   constructor(user: string, password: string) {
     this.version = "0.1-nodejs";
@@ -10,11 +10,45 @@ class SuperFacturaAPI {
     this.password = password;
   }
 
-  async SendDTE(data: any, env: "cer" | "pro", options: any = {}) {
+  async SendDTE(
+    data: any,
+    ambiente: "cer" | "pro" | "dem",
+    options: {
+      mail?: string;
+      savePDF?: string;
+      getPDF?: 1 | 0;
+      saveXML?: string;
+      getXML?: 1 | 0;
+      saveHTML?: string;
+      getHTML?: 1 | 0;
+      saveEscPos?: boolean;
+      getEscPos?: 1 | 0;
+      documentID?: string;
+      encoding?: string;
+      import?: number;
+      isSigned?: 1 | 0;
+      fix?: 1 | 0;
+      printer?: string;
+      model?: string;
+      copias?: number;
+      cedible?: 1 | 0;
+      url?: string;
+      fileExtensions?: {
+        xml?: string;
+        pdf?: string;
+        html?: string;
+        escpos?: string;
+      };
+    } = {}
+  ) {
     return new Promise(async (resolve, reject) => {
-      options["ambiente"] = env;
-      options["encoding"] = "UTF-8";
+      options["ambiente"] = ambiente;
+      // options["encoding"] = "UTF-8";
       options["version"] = this.version;
+
+      if (options["url"]) {
+        this.serverUrl = options["url"];
+      }
 
       if (options["savePDF"]) {
         options["getPDF"] = 1;
@@ -65,7 +99,7 @@ class SuperFacturaAPI {
             const saveEscpos = options["getEscPos"];
             if (saveEscpos) {
               const b64escpos = appRes["escpos"];
-              this.WriteFile(`${saveEscpos}.escpos`, atob(b64escpos));
+              this.WriteFile(`${saveEscpos}.pos`, this.DecodeBase64(b64escpos));
             }
           } else {
             return reject(output);
@@ -94,34 +128,44 @@ class SuperFacturaAPI {
       Accept: "text/plain",
     };
 
-    return await fetch(`${this.serverUrl}?a=json`, {
-      method: "POST",
-      headers,
-      body: searchParams.toString(),
-    })
-      .then((response) => response.blob())
-      .then((blob) => blob.arrayBuffer())
-      .then(async (arrayBuffer) => this.Decompress(arrayBuffer))
-      .catch((error) => console.error(error));
+    const fetch = require("node-fetch");
+
+    try {
+      const response = await fetch(`${this.serverUrl}?a=json`, {
+        method: "POST",
+        headers,
+        body: searchParams.toString(),
+      });
+
+      if (response) {
+        const blob = await response.blob();
+        const arrayBuffer = await blob.arrayBuffer();
+        return this.Decompress(arrayBuffer);
+      } else {
+        console.error("Fetch failed");
+      }
+    } catch (err) {
+      throw err;
+    }
   }
 
-  Decompress(gzip: any) {
+  Decompress(gzip: string) {
     const pako = require("pako");
     return pako.ungzip(gzip, { to: "string" });
   }
 
-  DecodeBase64(b64: any) {
+  DecodeBase64(b64: string) {
     return Buffer.from(b64, "base64");
   }
 
   WriteFile(filename: string, data: any) {
     const fs = require("fs");
-    fs.writeFile(filename, data, (err) => {
-      if (err) {
-        throw err;
-      }
-    });
+    try {
+      fs.writeFileSync(filename, data);
+    } catch (err) {
+      throw err;
+    }
   }
 }
 
-module.exports = SuperFacturaAPI;
+module.exports = { SuperFacturaAPI };
