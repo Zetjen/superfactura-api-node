@@ -1,6 +1,6 @@
 # SuperFactura
 
-> Permite la conexión a SuperFactura o SuperBoleta desde sistemas desarrollados en NODE JS.
+> Permite la integración a la API de SuperFactura o SuperBoleta desde aplicaciones desarrolladas en NODE JS para la emisión de documentos tributarios electrónicos (DTE) en Chile.
 
 ## Requisitos
 
@@ -9,13 +9,15 @@ Para usar la API, se requiere una cuenta previamente registrada en SuperFactura 
 
 ## Getting Started
 
+*** En caso de problemas en la libreria, por favor contactarme a los datos en mi perfil de GitHub y no contactar a SuperFactura. En caso de una falla en SuperFactura, recomiendo completamente enviar un correo antes de llamar, ya que el servicio de soporte por Email es EXCELENTE. ***
+
 Estas instrucciones están diseñadas para hacer usar la API de manera rápida y sencilla.
 Para saber más información sobre la API, puedes ir al blog para desarrolladores de SuperFactura.
 
 ## Instalación
 
 Se debe crear la cuenta de SuperFactura y configurar el contribuyente.
-Si se quiere usar el ambiente producción se debe marcar la opción de pasar a producción en el formulario.
+Si se quiere usar el ambiente producción se debe marcar la opción de pasar a producción en el "Formulario del Contribuyente" en la plataforma de SuperFactura o SuperBoleta.
 
 ```
 npm i superfactura
