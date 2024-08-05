@@ -1,4 +1,4 @@
-# SuperFactura
+# [SuperFactura API](https://www.npmjs.com/package/superfactura)
 
 > Permite la integración a la API de SuperFactura o SuperBoleta desde aplicaciones desarrolladas en NODE JS para la emisión de documentos tributarios electrónicos (DTE) en Chile.
 
