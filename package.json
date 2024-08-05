@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "Angel Zimmermann",
-  "license": "BSD 3",
+  "license": "SEE LICENSE IN REPO",
   "devDependencies": {
     "@types/node": "^20.10.4"
   }
