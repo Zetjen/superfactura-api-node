@@ -8,6 +8,7 @@ Para probar la librería ejecutar
 ```
 npm i
 npm run test
+npm run testjs
 ```
 
 ## Requisitos
