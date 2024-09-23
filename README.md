@@ -2,6 +2,14 @@
 
 > Permite la integración a la API de SuperFactura o SuperBoleta desde aplicaciones desarrolladas en NODE JS para la emisión de documentos tributarios electrónicos (DTE) en Chile.
 
+## Test
+
+Para probar la librería ejecutar
+```
+npm i
+npm run test
+```
+
 ## Requisitos
 
 Para usar la API, se requiere una cuenta previamente registrada en SuperFactura o SuperBoleta
@@ -27,19 +35,19 @@ npm i superfactura
 
 ### Inicializando clase de SuperFacturaAPI
 
-```js
-const SuperFacturaAPI = require("superfactura");
+```ts
+import { SuperFacturaAPI } from "superfactura";
 ```
 
-```js
-const api = new SuperFacturaAPI("usuario", "contraseña");
+```ts
+let superFactura = new SuperFacturaAPI(user, password);
 ```
 
 Al llamar a la clase de SF, se deben entregar los datos del usuario (correo y contraseña), se guardarán los datos entregados para luego poder llamar a las funciones de la clase.
 
 ### Emitiendo un documento
 
-```js
+```ts
 await api.SendDTE(json, "ambiente", opciones);
 ```
 
