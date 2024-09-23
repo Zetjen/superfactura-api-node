@@ -3,15 +3,9 @@ console.log();
 
 // Please fill this fields for testing
 
-const user = "user";
-const password = "password";
-const taxId = "00000000-0";
-
-// Alert if fields are not filled
-if (user === "user" || password === "password" || taxId === "00000000-0") {
-  console.error("- Please fill the fields in the test file! \n");
-  process.exit(1);
-}
+const user = "usuario@miempresa.cl";
+const password = "mipassword";
+const rut = "99581150-2";
 
 const { SuperFacturaAPI } = require("../superfactura.js");
 
@@ -24,7 +18,7 @@ const jsonData = {
       // 'FchEmis': '2015-01-01', // Opcional
     },
     Emisor: {
-      RUTEmisor: taxId,
+      RUTEmisor: rut,
       // Los demás datos serán agregados por SuperFactura
     },
     Receptor: {
