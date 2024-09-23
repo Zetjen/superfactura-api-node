@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import fs from "fs";
+import * as fs from "fs";
 import pako from "pako";
 
 export class SuperFacturaAPI {

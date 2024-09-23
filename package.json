@@ -1,11 +1,15 @@
 {
   "name": "superfactura",
   "version": "1.2.1",
-  "type": "module",
   "description": "SuperFactura package for all the client side actions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zetjen/superfactura-api-nodejs.git"
+  },
   "main": "superfactura.ts",
   "scripts": {
-    "test": "tsx test/superfactura.test.ts"
+    "test": "tsx test/superfactura.test.ts",
+    "testjs": "tsx test/superfactura.test.js"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
