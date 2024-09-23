@@ -1,4 +1,8 @@
-class SuperFacturaAPI {
+import fetch from "node-fetch";
+import fs from "fs";
+import pako from "pako";
+
+export class SuperFacturaAPI {
   version: string;
   user: string;
   password: string;
@@ -65,7 +69,7 @@ class SuperFacturaAPI {
 
       this.SendRequest(data, options)
         .then((output) => {
-          const obj = JSON.parse(output);
+          const obj = JSON.parse(output as string);
           if (obj["ack"] !== "ok") {
             const text =
               obj["response"]["title"] + " - " + obj["response"]["message"];
@@ -113,7 +117,7 @@ class SuperFacturaAPI {
     });
   }
 
-  async SendRequest(data, options) {
+  private async SendRequest(data, options) {
     const params = {
       user: this.user,
       pass: this.password,
@@ -127,8 +131,6 @@ class SuperFacturaAPI {
       "Content-type": "application/x-www-form-urlencoded",
       Accept: "text/plain",
     };
-
-    const fetch = require("node-fetch");
 
     try {
       const response = await fetch(`${this.serverUrl}?a=json`, {
@@ -149,17 +151,15 @@ class SuperFacturaAPI {
     }
   }
 
-  Decompress(gzip: string) {
-    const pako = require("pako");
+  private Decompress(gzip: string) {
     return pako.ungzip(gzip, { to: "string" });
   }
 
-  DecodeBase64(b64: string) {
+  private DecodeBase64(b64: string) {
     return Buffer.from(b64, "base64");
   }
 
-  WriteFile(filename: string, data: any) {
-    const fs = require("fs");
+  private WriteFile(filename: string, data: any) {
     try {
       fs.writeFileSync(filename, data);
     } catch (err) {
@@ -167,5 +167,3 @@ class SuperFacturaAPI {
     }
   }
 }
-
-module.exports = { SuperFacturaAPI };

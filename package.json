@@ -4,14 +4,19 @@
   "type": "module",
   "description": "SuperFactura package for all the client side actions",
   "main": "superfactura.ts",
+  "scripts": {
+    "test": "tsx test/superfactura.test.ts"
+  },
   "dependencies": {
-    "pako": "^2.1.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "pako": "^2.1.0"
   },
   "keywords": [],
   "author": "Angel Zimmermann",
   "license": "SEE LICENSE IN REPO",
   "devDependencies": {
-    "@types/node": "^20.10.4"
+    "@types/node": "^20.10.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
   }
 }
