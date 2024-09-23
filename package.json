@@ -1,6 +1,6 @@
 {
   "name": "superfactura",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
   "description": "SuperFactura package for all the client side actions",
   "main": "superfactura.ts",
