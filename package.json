@@ -1,6 +1,6 @@
 {
   "name": "superfactura",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "SuperFactura package for all the client side actions",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "main": "superfactura.ts",
   "scripts": {
     "test": "tsx test/superfactura.test.ts",
-    "testjs": "tsx test/superfactura.test.js"
+    "testjs": "node test/superfactura.test.js"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
