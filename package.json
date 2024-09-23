@@ -1,6 +1,6 @@
 {
   "name": "superfactura",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "SuperFactura package for all the client side actions",
   "repository": {
     "type": "git",
