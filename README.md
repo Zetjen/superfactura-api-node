@@ -1,43 +1,47 @@
+Here's the translation into English:
+
 # [SuperFactura API](https://www.npmjs.com/package/superfactura)
+
+> [DOCUMENTACIÓN EN ESPAÑOL](README.es.md)
 
 [![Release](https://github.com/Zetjen/superfactura-api-nodejs/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/Zetjen/superfactura-api-nodejs/actions/workflows/npm-publish.yml)
 
-> Permite la integración a la API de SuperFactura o SuperBoleta desde aplicaciones desarrolladas en NODE JS para la emisión de documentos tributarios electrónicos (DTE) en Chile.
+> Enables integration with the SuperFactura or SuperBoleta API from NODE JS applications for issuing electronic tax documents (DTE) in Chile.
 
 ## Test
 
-Para probar la librería ejecutar
+To test the library, run:
 
 ```
 npm i
 npm run test
 ```
 
-## Requisitos
+## Requirements
 
-Para usar la API, se requiere una cuenta previamente registrada en SuperFactura o SuperBoleta
-[SuperFactura](https://superfactura.cl/) y [SuperBoleta](https://superboleta.cl/) crear la cuenta es gratuita y solo se debe pagar una vez que se empieza a usar.
+To use the API, you need an account previously registered with SuperFactura or SuperBoleta.
+[SuperFactura](https://superfactura.cl/) and [SuperBoleta](https://superboleta.cl/) accounts are free to create, and payment is only required once usage begins.
 
 ## Getting Started
 
 > [!IMPORTANT]  
-> En caso de problemas en la libreria, por favor contactarme a los datos en mi perfil de GitHub y no contactar a SuperFactura. En caso de una falla en SuperFactura, recomiendo completamente enviar un correo antes de llamar, ya que el servicio de soporte por Email es EXCELENTE.
+> In case of issues with the library, please contact me using the details in my GitHub profile and do not reach out to SuperFactura. If there is a failure with SuperFactura, I highly recommend sending an email before calling, as their email support service is EXCELLENT.
 
-Estas instrucciones están diseñadas para hacer usar la API de manera rápida y sencilla.
-Para saber más información sobre la API, puedes ir al blog para desarrolladores de SuperFactura.
+These instructions are designed to help you use the API quickly and easily.
+For more detailed information about the API, you can visit the SuperFactura developer blog.
 
-## Instalación
+## Installation
 
-Se debe crear la cuenta de SuperFactura y configurar el contribuyente.
-Si se quiere usar el ambiente producción se debe marcar la opción de pasar a producción en el "Formulario del Contribuyente" en la plataforma de SuperFactura o SuperBoleta.
+You must create a SuperFactura account and configure the taxpayer.
+If you wish to use the production environment, you need to select the option to switch to production in the "Taxpayer Form" on the SuperFactura or SuperBoleta platform.
 
 ```
 npm i superfactura
 ```
 
-## Uso
+## Usage
 
-### Inicializando clase de SuperFacturaAPI
+### Initializing the SuperFacturaAPI Class
 
 ```ts
 import { SuperFacturaAPI } from "superfactura";
@@ -47,22 +51,22 @@ import { SuperFacturaAPI } from "superfactura";
 let superFactura = new SuperFacturaAPI(user, password);
 ```
 
-Al llamar a la clase de SF, se deben entregar los datos del usuario (correo y contraseña), se guardarán los datos entregados para luego poder llamar a las funciones de la clase.
+When calling the SF class, you need to provide user data (email and password). The provided data will be stored to later call the class functions.
 
-### Emitiendo un documento
+### Issuing a Document
 
 ```ts
-await api.SendDTE(json, "ambiente", opciones);
+await api.SendDTE(json, "environment", options);
 ```
 
-El primer valor que se le pasa a "SendDTE" es el [JSON](https://superfactura.cl/pages/examples) que contiene la información del DTE
-Luego se puede pasar el ambiente y [opciones adicionales](https://superfactura.cl/pages/opciones).
-(!) Si no se pasa el ambiente en la función, se usara el ambiente agregado por defecto al inicializar la clase SuperFacturaAPI.
+The first value passed to "SendDTE" is the [JSON](https://superfactura.cl/pages/examples) containing the DTE information.
+Next, you can pass the environment and [additional options](https://superfactura.cl/pages/opciones).
+(!) If the environment is not passed in the function, the default environment set when initializing the SuperFacturaAPI class will be used.
 
-#### Recomendaciones
+#### Recommendations
 
-- Usar la opción "documentID" para evitar duplicar documentos.
-- Hacer conexión con servidor local para asegurar emisión de documentos cuando no hay conexión estable
+- Use the "documentID" option to avoid document duplication.
+- Connect with a local server to ensure document issuance when there is an unstable connection.
 
 ## Authors
 
