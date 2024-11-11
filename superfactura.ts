@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import * as fs from "fs";
-import pako from "pako";
+import pako, { Data } from "pako";
 
 export class SuperFacturaAPI {
   version: string;
@@ -151,7 +151,7 @@ export class SuperFacturaAPI {
     }
   }
 
-  private Decompress(gzip: string) {
+  private Decompress(gzip: Data) {
     return pako.ungzip(gzip, { to: "string" });
   }
 
