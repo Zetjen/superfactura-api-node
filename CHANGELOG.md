@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.0.0...v1.1.0) (2024-11-11)
+
+
+### Features
+
+* automatic build ([4100f23](https://github.com/Zetjen/superfactura-api-nodejs/commit/4100f239cb09b7439205381734239c6d4dd0d925))
+
 ## 1.0.0 (2024-11-11)
 
 
