@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.2.0...v1.2.1) (2024-11-11)
+
+
+### Bug Fixes
+
+* exporting types ([2a2d70f](https://github.com/Zetjen/superfactura-api-nodejs/commit/2a2d70f8b1811e61ada21b1705ff8bb5933aa4b5))
+
 ## [1.2.0](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.1.0...v1.2.0) (2024-11-11)
 
 
