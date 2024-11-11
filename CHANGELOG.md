@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.1.0...v1.2.0) (2024-11-11)
+
+
+### Features
+
+* add type safety ([8733487](https://github.com/Zetjen/superfactura-api-nodejs/commit/8733487a2ef4eb6c6bfc8033184bce35cc055d8c))
+
 ## [1.1.0](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.0.0...v1.1.0) (2024-11-11)
 
 
