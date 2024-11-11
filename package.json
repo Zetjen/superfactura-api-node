@@ -6,10 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/Zetjen/superfactura-api-nodejs.git"
   },
-  "main": "superfactura.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "tsx test/superfactura.test.ts",
-    "testjs": "node test/superfactura.test.js"
+    "test": "tsx test/superfactura.test.js"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",

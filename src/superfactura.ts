@@ -2,6 +2,9 @@ import fetch from "node-fetch";
 import * as fs from "fs";
 import pako, { Data } from "pako";
 
+import { SendDTEOptions, SendDTEResponse, SIIEnvironment } from "./types";
+import { SuperFacturaJSON } from "./json.types";
+
 export class SuperFacturaAPI {
   version: string;
   user: string;
@@ -15,36 +18,10 @@ export class SuperFacturaAPI {
   }
 
   async SendDTE(
-    data: any,
-    ambiente: "cer" | "pro" | "dem",
-    options: {
-      mail?: string;
-      savePDF?: string;
-      getPDF?: 1 | 0;
-      saveXML?: string;
-      getXML?: 1 | 0;
-      saveHTML?: string;
-      getHTML?: 1 | 0;
-      saveEscPos?: boolean;
-      getEscPos?: 1 | 0;
-      documentID?: string;
-      encoding?: string;
-      import?: number;
-      isSigned?: 1 | 0;
-      fix?: 1 | 0;
-      printer?: string;
-      model?: string;
-      copias?: number;
-      cedible?: 1 | 0;
-      url?: string;
-      fileExtensions?: {
-        xml?: string;
-        pdf?: string;
-        html?: string;
-        escpos?: string;
-      };
-    } = {}
-  ) {
+    data: SuperFacturaJSON,
+    ambiente: SIIEnvironment,
+    options: SendDTEOptions = {}
+  ): Promise<SendDTEResponse> {
     return new Promise(async (resolve, reject) => {
       options["ambiente"] = ambiente;
       // options["encoding"] = "UTF-8";

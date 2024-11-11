@@ -3,8 +3,10 @@
     "target": "es5",
     "module": "commonjs",
     "esModuleInterop": true,
+    "declaration": true,
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "outDir": "./dist"
   },
-  "include": ["superfactura.ts"]
+  "include": ["src/superfactura.ts"]
 }
