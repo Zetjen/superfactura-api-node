@@ -13,7 +13,7 @@ if (user === "user" || password === "password" || taxId === "00000000-0") {
   process.exit(1);
 }
 
-import { SuperFacturaAPI } from "../superfactura";
+import { SuperFacturaAPI } from "../src/superfactura";
 
 let superFactura = new SuperFacturaAPI(user, password);
 

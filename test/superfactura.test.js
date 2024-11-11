@@ -13,7 +13,7 @@ if (user === "user" || password === "password" || taxId === "00000000-0") {
   process.exit(1);
 }
 
-const { SuperFacturaAPI } = require("../superfactura.js");
+const { SuperFacturaAPI } = require("../../superfactura.js");
 
 let superFactura = new SuperFacturaAPI(user, password);
 
