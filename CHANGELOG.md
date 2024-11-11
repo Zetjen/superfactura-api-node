@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.3.0...v1.3.1) (2024-11-11)
+
+
+### Bug Fixes
+
+* move index.ts to root ([6026a4a](https://github.com/Zetjen/superfactura-api-nodejs/commit/6026a4aede1fba6675d4958b330bc4501641aabf))
+* readme ([715055d](https://github.com/Zetjen/superfactura-api-nodejs/commit/715055d782ee2bcd55f7438ed6ca99379d64f15a))
+
 ## [1.3.0](https://github.com/Zetjen/superfactura-api-nodejs/compare/v1.2.2...v1.3.0) (2024-11-11)
 
 
