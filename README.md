@@ -1,5 +1,3 @@
-Here's the translation into English:
-
 # [SuperFactura API](https://www.npmjs.com/package/superfactura)
 
 > [DOCUMENTACIÓN EN ESPAÑOL](README.es.md)
